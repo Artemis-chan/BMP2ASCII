@@ -1,1 +1,1 @@
-make.bat && img_ascii.exe > output.txt
+make.bat && img_ascii.exe Bendy.bmp > output.txt

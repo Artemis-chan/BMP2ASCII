@@ -10,16 +10,24 @@ int main(int argc, char *argv[])
 	if(argc != 2)
 	{
 		printf("usage: img_ascii image.bmp\n");
-		//return 1;
+		return 1;
 	}
 
 	FILE *img; // = fopen("Bendy.bmp", "r");
-	fopen_s(&img, "Bendy.bmp", "r");
+	fopen_s(&img, argv[1], "r");
+
+	if(img == NULL)
+	{
+		printf("Can't open file.\n");
+		return 1;
+	}
 
 	bmpinfo info;
 	fread(&info, sizeof(bmpinfo), 1, img);
 	bmpheader header;
 	fread(&header, sizeof(bmpheader), 1, img);
+
+	//todo: add not correct file protection
 
 	LONG height = abs(header.height), width = header.width;
 
@@ -46,12 +54,12 @@ int main(int argc, char *argv[])
 
 char get_char(double val)
 {
-	if(val < 30)
-		return 'E';
+	if(val < 20)
+		return '.';
 	else if(val < 70)
-		return 'A';
-	else if(val > 250)
+		return '|';
+	else if(val > 180)
 		return '0';
 	else
-		return ';';
+		return 'U';
 }
