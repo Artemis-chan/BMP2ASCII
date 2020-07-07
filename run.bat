@@ -1,0 +1,1 @@
+make.bat && img_ascii.exe > output.txt

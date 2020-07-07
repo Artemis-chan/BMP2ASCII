@@ -1,0 +1,1 @@
+clang img_ascii.c -g -o img_ascii.exe
